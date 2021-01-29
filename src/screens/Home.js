@@ -1,9 +1,17 @@
 import React from 'react';
-import {StyleSheet, View, Text, StatusBar, SafeAreaView} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  StatusBar,
+  SafeAreaView,
+  Image,
+} from 'react-native';
+import * as Animatable from 'react-native-animatable';
 import {APP_GREY, APP_PRIMARY_COLOR, APP_WHITE} from '../util/constants';
-import logo from '../assets/logos/logo5.png';
+import logo from '../assets/logos/logo4.png';
 
-const Splash = ({navigation}) => {
+const Home = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar
@@ -14,21 +22,19 @@ const Splash = ({navigation}) => {
         networkActivityIndicatorVisible={true}
       />
       <View style={styles.header}>
-        <Image
-          source={logo}
-          style={styles.logo}
-          resizeMode="stretch"
-        />
+        <Image source={logo} style={styles.logo} resizeMode="stretch" />
       </View>
-      <View
+      <Animatable.View
+        animation="fadeInUpBig"
+        delay={1000}
         style={styles.footer}>
-        <Text style={styles.title}>Crack your JEE exam...</Text>
-      </View>
+        <Text style={styles.title}>Welcome! Team Toycathon</Text>
+      </Animatable.View>
     </SafeAreaView>
   );
 };
 
-export default Splash;
+export default Home;
 
 const styles = StyleSheet.create({
   container: {

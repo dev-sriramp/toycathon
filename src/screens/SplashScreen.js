@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet, View, Text, StatusBar, SafeAreaView} from 'react-native';
+import * as Animatable from 'react-native-animatable';
 import {APP_GREY, APP_PRIMARY_COLOR, APP_WHITE} from '../util/constants';
 import logo from '../assets/logos/logo4.png';
 
@@ -14,15 +15,13 @@ const SplashScreen = ({navigation}) => {
         networkActivityIndicatorVisible={true}
       />
       <View style={styles.header}>
-        <Image
+        <Animatable.Image
+          animation="pulse"
+          iterationCount={200}
           source={logo}
           style={styles.logo}
           resizeMode="stretch"
         />
-      </View>
-      <View
-        style={styles.footer}>
-        <Text style={styles.title}>Crack your JEE exam...</Text>
       </View>
     </SafeAreaView>
   );
