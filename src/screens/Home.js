@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import {APP_GREY, APP_PRIMARY_COLOR, APP_WHITE} from '../util/constants';
-import logo from '../assets/logos/logo4.png';
+import logo from '../assets/logos/miniature.gif';
 
 const Home = ({navigation}) => {
   return (
@@ -28,7 +28,7 @@ const Home = ({navigation}) => {
         animation="fadeInUpBig"
         delay={1000}
         style={styles.footer}>
-        <Text style={styles.title}>Welcome! Team Toycathon</Text>
+        <Text style={styles.title}>Welcome! Learner. Lets go =&gt;</Text>
       </Animatable.View>
     </SafeAreaView>
   );
@@ -55,13 +55,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
   },
   logo: {
-    height: 200,
-    width: 200,
+    height: 400,
+    width: 400,
     borderRadius: 300,
   },
   title: {
     color: APP_WHITE,
-    fontSize: 25,
+    fontSize: 30,
     fontWeight: 'bold',
   },
   text: {
