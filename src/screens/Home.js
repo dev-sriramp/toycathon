@@ -8,8 +8,10 @@ import {
   Image,
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
+import 'react-native-linear-gradient';
 import {APP_GREY, APP_PRIMARY_COLOR, APP_WHITE} from '../util/constants';
 import logo from '../assets/logos/miniature.gif';
+import click from '../assets/images/click.gif'
 
 const Home = ({navigation}) => {
   return (
@@ -22,13 +24,26 @@ const Home = ({navigation}) => {
         networkActivityIndicatorVisible={true}
       />
       <View style={styles.header}>
-        <Image source={logo} style={styles.logo} resizeMode="stretch" />
+        <Animatable.Image
+          animation="pulse"
+          iterationCount={200000}
+          source={logo}
+          style={styles.logo}
+          resizeMode="stretch"
+        />
       </View>
-      <Animatable.View
+      <Animatable.View onStartShouldSetResponder={() =>navigation.navigate('LandScreen')}
         animation="fadeInUpBig"
         delay={1000}
         style={styles.footer}>
-        <Text style={styles.title}>Welcome! Learner. Lets go =&gt;</Text>
+        <Text style={styles.title} >Welcome! Learner.{"\n"} Lets go =&gt;</Text>
+		<Animatable.Image
+			animation="zoomInUp"
+			delay={4500}
+			iterationCount={200000}
+			source={click}
+			style={styles.img}
+			/>
       </Animatable.View>
     </SafeAreaView>
   );
@@ -49,10 +64,8 @@ const styles = StyleSheet.create({
   footer: {
     flex: 0,
     backgroundColor: APP_PRIMARY_COLOR,
-    borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
-    paddingVertical: 30,
-    paddingHorizontal: 30,
+    height:150,
   },
   logo: {
     height: 400,
@@ -63,10 +76,16 @@ const styles = StyleSheet.create({
     color: APP_WHITE,
     fontSize: 30,
     fontWeight: 'bold',
+	alignSelf:'center',
   },
   text: {
     color: APP_GREY,
     marginTop: 5,
     fontWeight: 'bold',
+  },
+  img: {
+    height:100,
+    width:100,
+	left:350,
   },
 });

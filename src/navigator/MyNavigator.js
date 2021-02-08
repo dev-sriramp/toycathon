@@ -5,7 +5,7 @@ import SplashScreen from '../screens/SplashScreen';
 import {ContextManager} from '../components/ContextManager';
 import HomeStackScreen from '../components/HomeStackScreen';
 import Home from '../screens/Home';
-
+import LandScreen from '../screens/LandScreen';
 const Drawer = createDrawerNavigator();
 
 const MyNavigator = () => {
@@ -13,7 +13,7 @@ const MyNavigator = () => {
   React.useEffect(() => {
     setTimeout(async () => {
       setShowSplash(false);
-    }, 2000);
+    }, 1000);
   }, []);
   if (showSplash) {
     return <SplashScreen />;
@@ -23,6 +23,8 @@ const MyNavigator = () => {
       <NavigationContainer>
         <Drawer.Navigator>
           <Drawer.Screen name="Home" component={Home} />
+          <Drawer.Screen name="LandScreen" component={LandScreen} />
+          <Drawer.Screen name="SplashScreen" component={SplashScreen} />
         </Drawer.Navigator>
       </NavigationContainer>
     </ContextManager.Provider>
