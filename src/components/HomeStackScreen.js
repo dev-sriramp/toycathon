@@ -2,7 +2,7 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {APP_PRIMARY_COLOR, APP_WHITE, ICON_SIZE} from '../util/constants';
-import Home from '../screens/Home';
+import HomeScreen from '../screens/HomeScreen';
 
 const HomeStack = createStackNavigator();
 
@@ -16,8 +16,8 @@ const HomeStackScreen = ({navigation}) => (
       },
     }}>
     <HomeStack.Screen
-      name="Home"
-      component={Home}
+      name="HomeScreen"
+      component={HomeScreen}
       options={{
         title: 'HOME',
         headerLeft: () => (

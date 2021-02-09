@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {
   StyleSheet,
@@ -6,15 +5,16 @@ import {
   TouchableOpacity,
   StatusBar,
   SafeAreaView,
-  Image,
+  ScrollView,
 } from 'react-native';
+import * as Animatable from 'react-native-animatable';
 import 'react-native-linear-gradient';
 import alphabet from '../assets/images/Alphabet.gif';
 import numbers from '../assets/images/Numbers.gif';
 import arithmetic from '../assets/images/Arithmetics.gif';
 import { APP_SECONDARY_COLOR,APP_PRIMARY_COLOR } from '../util/constants';
 
-const LandScreen = () => {
+const LandScreen = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
     <StatusBar
@@ -24,25 +24,43 @@ const LandScreen = () => {
         translucent={false}
         networkActivityIndicatorVisible={true}
       />
+    <ScrollView>
     <View style={styles.container} >
         <TouchableOpacity >
-      <Image
-        style={styles.logo}
-        source={alphabet}
-      />
-      <Image 
-        style={styles.logo}
-        source={numbers}
-      />
-      <Image
-        style={styles.logo}
-        source={arithmetic}
-      />
-      <Image
-        style={styles.logo}
-        source={numbers}
-      /></TouchableOpacity>
+          <Animatable.Image onStartShouldSetResponder={() => navigation.navigate('HomeScreen')}
+            animation="pulse"
+            iterationCount={200000}
+            source={alphabet}
+            style={styles.logo}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity >
+          <Animatable.Image onStartShouldSetResponder={() => navigation.navigate('HomeScreen')}
+            animation="fadeInUpBig"
+            iterationCount={1}
+            de
+            source={arithmetic}
+            style={styles.logo}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity >
+          <Animatable.Image onStartShouldSetResponder={() => navigation.navigate('HomeScreen')}
+            animation="zoomInUp"
+            iterationCount={1}
+            source={numbers}
+            style={styles.logo}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity >
+          <Animatable.Image onStartShouldSetResponder={() => navigation.navigate('HomeScreen')}
+            animation="fadeInUpBig"
+            iterationCount={1}
+            source={numbers}
+            style={styles.logo}
+          />
+        </TouchableOpacity>
     </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };

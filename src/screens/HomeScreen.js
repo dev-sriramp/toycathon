@@ -13,7 +13,7 @@ import {APP_GREY, APP_PRIMARY_COLOR, APP_WHITE} from '../util/constants';
 import logo from '../assets/logos/miniature.gif';
 import click from '../assets/images/click.gif'
 
-const Home = ({navigation}) => {
+const HomeScreen = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar
@@ -49,7 +49,7 @@ const Home = ({navigation}) => {
   );
 };
 
-export default Home;
+export default HomeScreen;
 
 const styles = StyleSheet.create({
   container: {
