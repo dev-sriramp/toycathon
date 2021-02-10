@@ -5,6 +5,8 @@ import SplashScreen from '../screens/SplashScreen';
 import {ContextManager} from '../components/ContextManager';
 import LandScreen from '../screens/LandScreen';
 import HomeScreen from '../screens/HomeScreen';
+import SoundScreen from '../screens/SoundScreen';
+
 
 const Drawer = createDrawerNavigator();
 
@@ -25,6 +27,7 @@ const MyNavigator = () => {
           <Drawer.Screen name="HomeScreen" component={HomeScreen} />
           <Drawer.Screen name="LandScreen" component={LandScreen} />
           <Drawer.Screen name="SplashScreen" component={SplashScreen} />
+          <Drawer.Screen name="SoundScreen" component={SoundScreen} />
         </Drawer.Navigator>
       </NavigationContainer>
     </ContextManager.Provider>
