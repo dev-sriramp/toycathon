@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import 'react-native-linear-gradient';
+import LottieView from 'lottie-react-native'
 import {APP_GREY, APP_PRIMARY_COLOR, APP_WHITE} from '../util/constants';
-import logo from '../assets/logos/miniature.gif';
 import click from '../assets/images/click.gif'
 
 const HomeScreen = ({navigation}) => {
@@ -24,12 +24,12 @@ const HomeScreen = ({navigation}) => {
         networkActivityIndicatorVisible={true}
       />
       <View style={styles.header}>
-        <Animatable.Image
-          animation="pulse"
-          iterationCount={200000}
-          source={logo}
-          style={styles.logo}
-          resizeMode="stretch"
+        <LottieView
+          source={require('../assets/logos/HomeTree.json')}
+          loop={true}
+          autoPlay={true}
+          progress={0}
+          style={{ width: 400, height: 400}}
         />
       </View>
       <Animatable.View onStartShouldSetResponder={() =>navigation.navigate('LandScreen')}

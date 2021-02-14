@@ -7,16 +7,29 @@ import {
     SafeAreaView,
     ScrollView,
 } from 'react-native';
+import { Button } from 'react-native-elements';
 import * as Animatable from 'react-native-animatable';
-import 'react-native-linear-gradient';
+import LinearGradient from 'react-native-linear-gradient';
 import Audio from 'react-native-sound';
-import {  URLS, APP_WHITE } from '../util/constants';
-let audio = new Audio(URLS + "apple.mp3")
+import { URLS, APP_WHITE, APP_SECONDARY_COLOR,APP_GREY } from '../util/constants';
 
-const start = () => {
-    audio.play()
-}
-const LandScreen = ({ navigation }) => {
+const SoundScreen = ({ navigation }) => {
+    //var audio = new Audio(URLS + "apple.mp3")
+    const [index, setIndex] = React.useState(0);
+    var aud = ["apple.mp3", "Orange.mp3"];
+    var SampleNameArray = ["apple.gif", "Alphabet.gif"];
+    var audio = new Audio(URLS + aud[index]);
+    const inde = () => {
+        audio.stop()
+        setIndex(index - 1)
+    }
+    const inder = () => {
+        audio.stop()
+        setIndex(index + 1)
+    }
+    const start = () => {
+        audio.play()
+    }
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar
@@ -26,37 +39,80 @@ const LandScreen = ({ navigation }) => {
                 translucent={false}
                 networkActivityIndicatorVisible={true}
             />
-            <ScrollView>
-                <View style={styles.container} >
+                <View style={styles.body} >
                     <TouchableOpacity >
                         <Animatable.Image onStartShouldSetResponder={start}
                             animation="pulse"
                             iterationCount={200000}
                             source={{
-                                uri: URLS + 'apple.gif',
+                                uri: URLS + SampleNameArray[index],
                             }}
                             style={styles.logo}
                         />
                     </TouchableOpacity>
                 </View>
-            </ScrollView>
+                    <View style={styles.button}
+                        animation="fadeInUpBig"
+                        delay={100}>
+                            
+                        <Button onPress={inde}
+                    ViewComponent={LinearGradient}
+                    linearGradientProps={{
+                        colors: ['red', 'red'],
+                        start: { x: 0, y: 0.5 },
+                        end: { x: 1, y: 0.5 },
+                    }}
+                            title="Back" />
+                        <Button title="Next"
+                    ViewComponent={LinearGradient}
+                    linearGradientProps={{
+                        colors: ['green', 'green'],
+                        start: { x: 0, y: 0.5 },
+                        end: { x: 1, y: 0.5 },
+                    }}
+                    onPress={inder} />
+                    </View>
         </SafeAreaView>
     );
 };
-export default LandScreen;
+export default SoundScreen;
 const styles = StyleSheet.create({
     container: {
-        paddingTop: 150,
-        backgroundColor:APP_WHITE,
+        flex: 1,
+        backgroundColor: APP_WHITE,
+    },
+    body: {
+        flex: 4,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    button: {
+        flexDirection: 'row',
+        height: 100,
+        backgroundColor: APP_SECONDARY_COLOR,
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        borderRadius:30,
         
     },
     logo: {
-        flex:10,        
+        height: 400,
+        width: 400,
+    },
+    title: {
+        color: APP_WHITE,
+        fontSize: 30,
+        fontWeight: 'bold',
         alignSelf: 'center',
-        width: 300,
-        height:300,
-        borderWidth: 5,
-        borderRadius: 50,
-
-    }
+    },
+    text: {
+        color: APP_GREY,
+        marginTop: 5,
+        fontWeight: 'bold',
+    },
+    img: {
+        height: 100,
+        width: 100,
+        left: 350,
+    },
 });
