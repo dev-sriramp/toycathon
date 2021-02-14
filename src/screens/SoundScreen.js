@@ -6,18 +6,21 @@ import {
     StatusBar,
     SafeAreaView,
     ScrollView,
+    Text,
 } from 'react-native';
 import { Button } from 'react-native-elements';
 import * as Animatable from 'react-native-animatable';
 import LinearGradient from 'react-native-linear-gradient';
 import Audio from 'react-native-sound';
-import { URLS, APP_WHITE, APP_SECONDARY_COLOR,APP_GREY } from '../util/constants';
+import { URLS, APP_WHITE, APP_PRIMARY_COLOR, APP_GREY } from '../util/constants';
+import { Alert } from 'react-native';
 
 const SoundScreen = ({ navigation }) => {
     //var audio = new Audio(URLS + "apple.mp3")
     const [index, setIndex] = React.useState(0);
-    var aud = ["apple.mp3", "Orange.mp3"];
-    var SampleNameArray = ["apple.gif", "Alphabet.gif"];
+    var aud = ["apple.mp3", "Orange.mp3", "Orange.mp3"];
+    var SampleNameArray = ["apple.gif", "Alphabet.gif", "Alphabet.gif"];
+    var result = aud.length;
     var audio = new Audio(URLS + aud[index]);
     const inde = () => {
         audio.stop()
@@ -30,6 +33,17 @@ const SoundScreen = ({ navigation }) => {
     const start = () => {
         audio.play()
     }
+    if (index == 0) {
+        result = 10;
+        var valueInitial = 'none';
+    } else {
+        var valueInitial = 'flex';
+    }
+    if (index == result - 1) {
+        var valueFinal = 'none';
+    } else {
+        var valueFinal = 'flex';
+    }
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar
@@ -39,39 +53,39 @@ const SoundScreen = ({ navigation }) => {
                 translucent={false}
                 networkActivityIndicatorVisible={true}
             />
-                <View style={styles.body} >
-                    <TouchableOpacity >
-                        <Animatable.Image onStartShouldSetResponder={start}
-                            animation="pulse"
-                            iterationCount={200000}
-                            source={{
-                                uri: URLS + SampleNameArray[index],
-                            }}
-                            style={styles.logo}
-                        />
-                    </TouchableOpacity>
-                </View>
-                    <View style={styles.button}
-                        animation="fadeInUpBig"
-                        delay={100}>
-                            
-                        <Button onPress={inde}
-                    ViewComponent={LinearGradient}
-                    linearGradientProps={{
-                        colors: ['red', 'red'],
-                        start: { x: 0, y: 0.5 },
-                        end: { x: 1, y: 0.5 },
-                    }}
-                            title="Back" />
-                        <Button title="Next"
+            <View style={styles.body} >
+                <TouchableOpacity >
+                    <Animatable.Image onStartShouldSetResponder={start}
+                        animation="pulse"
+                        iterationCount={200000}
+                        source={{
+                            uri: URLS + SampleNameArray[index],
+                        }}
+                        style={styles.logo}
+                    />
+                </TouchableOpacity>
+            </View>
+            <Animatable.View style={styles.button}
+                animation="pulse"
+                iterationCount={200000}>
+                <TouchableOpacity style={{ display: valueInitial, width: 250, fontSize: 20 }}>
+                    <Button titleStyle={{ fontSize: 60, borderRadius: 50, }} buttonStyle={{ borderTopRightRadius: 30, }} onPress={inde}
+                        ViewComponent={LinearGradient}
+                        linearGradientProps={{
+                            colors: ['red', 'red'],
+                            start: { x: 0, y: 0.5 },
+                            end: { x: 1, y: 0.5 },
+                        }}
+                        title="Back" /></TouchableOpacity>
+                <TouchableOpacity style={{ display: valueFinal, width: 250, fontSize: 20}}>
+                    <Button titleStyle={{ fontSize: 60,  }} buttonStyle={{borderTopLeftRadius: 30,}} onPress={inder}
                     ViewComponent={LinearGradient}
                     linearGradientProps={{
                         colors: ['green', 'green'],
                         start: { x: 0, y: 0.5 },
                         end: { x: 1, y: 0.5 },
-                    }}
-                    onPress={inder} />
-                    </View>
+                    }} title="Next"/></TouchableOpacity>
+            </Animatable.View>
         </SafeAreaView>
     );
 };
@@ -89,11 +103,10 @@ const styles = StyleSheet.create({
     button: {
         flexDirection: 'row',
         height: 100,
-        backgroundColor: APP_SECONDARY_COLOR,
+        //backgroundColor: APP_PRIMARY_COLOR,
         alignItems: 'center',
         justifyContent: 'space-between',
-        borderRadius:30,
-        
+        borderRadius: 30,
     },
     logo: {
         height: 400,
