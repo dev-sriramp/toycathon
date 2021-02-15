@@ -18,8 +18,8 @@ import { Alert } from 'react-native';
 const SoundScreen = ({ navigation }) => {
     //var audio = new Audio(URLS + "apple.mp3")
     const [index, setIndex] = React.useState(0);
-    var aud = ["apple.mp3", "Orange.mp3", "Orange.mp3"];
-    var SampleNameArray = ["apple.gif", "Alphabet.gif", "Alphabet.gif"];
+    var aud = ['AirPlane.mp3',"apple.mp3", "Orange.mp3", "Orange.mp3"];
+    var SampleNameArray = ['AirPlane.gif',"apple.gif", "Alphabet.gif", "Alphabet.gif"];
     var result = aud.length;
     var audio = new Audio(URLS + aud[index]);
     const inde = () => {
@@ -111,6 +111,7 @@ const styles = StyleSheet.create({
     logo: {
         height: 400,
         width: 400,
+        alignSelf: 'center',
     },
     title: {
         color: APP_WHITE,

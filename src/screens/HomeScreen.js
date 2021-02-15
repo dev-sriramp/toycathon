@@ -5,7 +5,6 @@ import {
   Text,
   StatusBar,
   SafeAreaView,
-  Image,
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import 'react-native-linear-gradient';
@@ -29,8 +28,9 @@ const HomeScreen = ({navigation}) => {
           loop={true}
           autoPlay={true}
           progress={0}
-          style={{ width: 400, height: 400}}
+          style={{ width: 450, height: 450}}
         />
+        <Text style={styles.text}>Miniature</Text>
       </View>
       <Animatable.View onStartShouldSetResponder={() =>navigation.navigate('LandScreen')}
         animation="fadeInUpBig"
@@ -82,6 +82,7 @@ const styles = StyleSheet.create({
     color: APP_GREY,
     marginTop: 5,
     fontWeight: 'bold',
+    fontSize:30,
   },
   img: {
     height:100,

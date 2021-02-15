@@ -1,8 +1,7 @@
 import React from 'react';
 import {StyleSheet, View, Text, StatusBar, SafeAreaView} from 'react-native';
-import * as Animatable from 'react-native-animatable';
 import {APP_GREY, APP_PRIMARY_COLOR, APP_WHITE} from '../util/constants';
-import logo from '../assets/logos/miniature.gif';
+import LottieView from 'lottie-react-native'
 
 const SplashScreen = ({navigation}) => {
   return (
@@ -15,13 +14,14 @@ const SplashScreen = ({navigation}) => {
         networkActivityIndicatorVisible={true}
       />
       <View style={styles.header}>
-        <Animatable.Image
-          animation="pulse"
-          iterationCount={200}
-          source={logo}
-          style={styles.logo}
-          resizeMode="stretch"
+        <LottieView
+          source={require('../assets/logos/HomeTree.json')}
+          loop={false}
+          autoPlay={true}
+          progress={1}
+          style={{ width: 450, height: 450 }}
         />
+        
       </View>
     </SafeAreaView>
   );
