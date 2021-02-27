@@ -5,7 +5,10 @@ import {
   Text,
   StatusBar,
   SafeAreaView,
+  Platform,
+  Alert,
 } from 'react-native';
+import NetInfo from "@react-native-community/netinfo";
 import * as Animatable from 'react-native-animatable';
 import 'react-native-linear-gradient';
 import LottieView from 'lottie-react-native'
@@ -13,6 +16,13 @@ import {APP_GREY, APP_PRIMARY_COLOR, APP_WHITE} from '../util/constants';
 import click from '../assets/images/click.gif'
 
 const HomeScreen = ({navigation}) => {
+  const unsubscribe = () => { 
+  NetInfo.addEventListener(state => {
+    if(state.isConnected==true){navigation.navigate('LandScreen')}
+    else{
+      navigation.navigate('SplashScreen')
+    }
+  })};
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar
@@ -32,14 +42,14 @@ const HomeScreen = ({navigation}) => {
         />
         <Text style={styles.text}>Miniature</Text>
       </View>
-      <Animatable.View onStartShouldSetResponder={() =>navigation.navigate('LandScreen')}
+      <Animatable.View onStartShouldSetResponder={unsubscribe}
         animation="fadeInUpBig"
         delay={1000}
         style={styles.footer}>
         <Text style={styles.title} >Welcome! Learner.{"\n"} Lets go =&gt;</Text>
-		<Animatable.Image
+        <Animatable.Image
 			animation="zoomInUp"
-			delay={4500}
+			delay={450}
 			iterationCount={200000}
 			source={click}
 			style={styles.img}
@@ -87,6 +97,6 @@ const styles = StyleSheet.create({
   img: {
     height:100,
     width:100,
-	left:350,
+	left:250,
   },
 });
