@@ -41,7 +41,6 @@ const HomeScreen = ({navigation}) => {
           style={{ width: 450, height: 450}}
         />
         <Text style={styles.text}>{APP_NAME}</Text>
-        <Text style={styles.text}>{APP_NAME}</Text>
       </View>
       <Animatable.View onStartShouldSetResponder={unsubscribe}
         animation="fadeInUpBig"
