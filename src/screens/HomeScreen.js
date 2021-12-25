@@ -12,7 +12,7 @@ import NetInfo from "@react-native-community/netinfo";
 import * as Animatable from 'react-native-animatable';
 import 'react-native-linear-gradient';
 import LottieView from 'lottie-react-native'
-import {APP_GREY, APP_PRIMARY_COLOR, APP_WHITE} from '../util/constants';
+import {APP_GREY, APP_PRIMARY_COLOR, APP_WHITE,APP_NAME} from '../util/constants';
 import click from '../assets/images/click.gif'
 
 const HomeScreen = ({navigation}) => {
@@ -29,7 +29,7 @@ const HomeScreen = ({navigation}) => {
         barStyle="dark-content"
         hidden={false}
         backgroundColor={APP_WHITE}
-        translucent={false}
+        translucent={true}
         networkActivityIndicatorVisible={true}
       />
       <View style={styles.header}>
@@ -40,7 +40,8 @@ const HomeScreen = ({navigation}) => {
           progress={0}
           style={{ width: 450, height: 450}}
         />
-        <Text style={styles.text}>Miniature</Text>
+        <Text style={styles.text}>{APP_NAME}</Text>
+        <Text style={styles.text}>{APP_NAME}</Text>
       </View>
       <Animatable.View onStartShouldSetResponder={unsubscribe}
         animation="fadeInUpBig"
@@ -48,8 +49,8 @@ const HomeScreen = ({navigation}) => {
         style={styles.footer}>
         <Text style={styles.title} >Welcome! Learner.{"\n"} Lets go =&gt;</Text>
         <Animatable.Image
-			animation="zoomInUp"
-			delay={450}
+			animation="bounceIn"
+			delay={1000}
 			iterationCount={200000}
 			source={click}
 			style={styles.img}

@@ -22,18 +22,18 @@ const LandScreen = ({navigation}) => {
       />
     <ScrollView>
     <View style={styles.container} >
-        <TouchableOpacity >
-          <Animatable.Image onStartShouldSetResponder={() => navigation.navigate('HomeScreen')}
-            animation="pulse"
-            iterationCount={200000}
+        <TouchableOpacity onPress={()=>{navigation.navigate('SoundScreen', { name: '0' })}} >
+          <Animatable.Image 
+            animation="fadeInUpBig"
+            iterationCount={1}
               source={{
                 uri: URLS+'Alphabet.gif',
               }}
             style={styles.logo}
           />
         </TouchableOpacity>
-        <TouchableOpacity >
-          <Animatable.Image onStartShouldSetResponder={() => navigation.navigate('HomeScreen')}
+        <TouchableOpacity onPress={()=>{navigation.navigate('SoundScreen', { name: '1' })}}>
+          <Animatable.Image
             animation="fadeInUpBig"
             iterationCount={1}
             de
@@ -43,22 +43,22 @@ const LandScreen = ({navigation}) => {
             style={styles.logo}
           />
         </TouchableOpacity>
-        <TouchableOpacity >
-          <Animatable.Image onStartShouldSetResponder={() => navigation.navigate('HomeScreen')}
+        <TouchableOpacity onPress={()=>{navigation.navigate('SoundScreen', { name: '2' })}}>
+          <Animatable.Image
             animation="zoomInUp"
             iterationCount={1}
               source={{
-                uri: URLS + 'Arithmetic.gif',
+                uri: URLS + 'words.gif',
               }}
             style={styles.logo}
           />
         </TouchableOpacity>
-        <TouchableOpacity >
-          <Animatable.Image onStartShouldSetResponder={() => navigation.navigate('SoundScreen')}
+        <TouchableOpacity onPress={()=>{navigation.navigate('SoundScreen', { name: '3' })}}>
+          <Animatable.Image 
             animation="fadeInUpBig"
             iterationCount={1}
               source={{
-                uri: URLS + 'Alphabet.gif',
+                uri: URLS + 'fruit.gif',
               }}
             style={styles.logo}
           />
