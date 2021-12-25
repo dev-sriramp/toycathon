@@ -1,1 +1,0 @@
-["Airplane.gif","apple.gif", "Alphabet.gif", "Alphabet.gif"]
